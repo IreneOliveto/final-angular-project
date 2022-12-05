@@ -2,6 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +48,7 @@ import { RecipeComponent } from './page/recipe/recipe.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
     MatButtonModule,
     ReactiveFormsModule,

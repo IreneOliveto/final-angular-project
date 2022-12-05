@@ -1,1 +1,28 @@
-<p>recipe-list works!</p>
+<mat-card-title>Recipes</mat-card-title>
+<div *ngIf="loading$ | async">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div  class="recipes-container" *ngIf="!(loading$ | async)" style="display:flex; flex-direction: row;">
+ <div *ngFor="let recipe of recipes$ | async">
+
+  <mat-card style="margin: 10px">
+    <img mat-card-image src="recipe.image">
+    <mat-card-header [ngStyle]="{'color':'black'}"> {{recipe.name}} </mat-card-header>
+    <button mat-button>Read this recipe</button>
+  </mat-card>
+
+    <mat-card style="margin: 10px">
+      <img mat-card-image src="recipe.image">
+      <mat-card-header [ngStyle]="{'color':'black'}"> {{recipe.name}} </mat-card-header>
+      <button mat-button>Read this recipe</button>
+    </mat-card>
+
+    <mat-card style="margin: 10px">
+      <img mat-card-image src="recipe.image">
+      <mat-card-header [ngStyle]="{'color':'black'}"> {{recipe.name}} </mat-card-header>
+      <button mat-button>Read this recipe</button>
+    </mat-card>
+
+  </div>
+</div>

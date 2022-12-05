@@ -8,7 +8,7 @@ import { delay, Observable } from 'rxjs';
 })
 export class RecipeService {
 
-  readonly BASE_URL = '';
+  readonly BASE_URL = 'http://localhost:3000/recipes';
 
   constructor(private http: HttpClient) { }
 
