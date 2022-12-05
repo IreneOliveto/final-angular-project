@@ -15,7 +15,7 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
-    path: 'recipe',
+    path: 'recipes',
     component: RecipeComponent
   },
   {
