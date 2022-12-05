@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe.model';
-import { loadingRecipes } from 'src/app/state/actions/recipes.action';
+import { RecipeService } from 'src/app/service/recipe.service';
+import { loadingRecipes, loadRecipes } from 'src/app/state/actions/recipes.action';
 import { AppState } from 'src/app/state/app.state';
 
 
@@ -16,7 +17,8 @@ export class RecipeListComponent {
   recipes$: Observable<Recipe[]>;
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private recipeService: RecipeService
   ) {
     this.loading$ = new Observable<boolean>();
     this.recipes$ = new Observable<Recipe[]>();
@@ -27,5 +29,8 @@ export class RecipeListComponent {
     this.recipes$ = this.store.select(state => state.recipeStates.recipes);
     this.store.dispatch(loadingRecipes());
 
+    this.recipeService.getRecipes().subscribe((recipes) => {
+      this.store.dispatch(loadRecipes({recipes}));
+    })
   }
 }

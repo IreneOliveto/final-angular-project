@@ -12,7 +12,7 @@ export class RecipeService {
 
   constructor(private http: HttpClient) { }
 
-  getApartments(): Observable<Recipe[]> {
+  getRecipes(): Observable<Recipe[]> {
     return this.http
     .get<Recipe[]>(`${this.BASE_URL}/recipe`).pipe(
     delay(1500)
