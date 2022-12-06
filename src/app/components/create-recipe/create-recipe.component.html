@@ -3,11 +3,13 @@
 </h1>
 
 <div class="container">
-  <form (ngSubmit)="createRecipe()" [formGroup]="createForm">
+  <form (ngSubmit)="submitForm()" [formGroup]="createForm">
 
     <mat-form-field appearance="fill">
       <mat-label>Recipe Name</mat-label>
-      <input matInput type="text" placeholder="Name..." formControlName="name" />
+      <input *ngIf="recipe$ | async as recipe" matInput type="text" placeholder="Name..." formControlName="name" [value]="recipe.name"/>
+      <input *ngIf="!(recipe$ | async) as recipe" matInput type="text" placeholder="Name..." formControlName="name"/>
+
       <p class="error-msg" *ngIf="nameInput.invalid && nameInput.touched">
         Enter a valid name.....
       </p>

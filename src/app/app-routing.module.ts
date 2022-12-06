@@ -24,6 +24,10 @@ const routes: Routes = [
     component: CreateRecipeComponent
   },
   {
+    path: 'create/:id',
+    component: CreateRecipeComponent
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

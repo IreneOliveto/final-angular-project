@@ -30,6 +30,10 @@ export class RecipeService {
   deleteRecipeById(id: string): Observable<Recipe> {
     return this.http.delete<Recipe>(`${this.BASE_URL}/recipes/${id}`);
   }
+
+  updateRecipeById(recipe: Recipe): Observable<Recipe> {
+    return this.http.put<Recipe>(`${this.BASE_URL}/recipes/${recipe.id}`, recipe);
+  }
 }
 
 
