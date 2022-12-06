@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from './page/homepage/homepage.component';
-import { ContactComponent } from './page/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { RecipeComponent } from './page/recipe/recipe.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomepageComponent
-  },
-  {
-    path: '',
-    component: HomepageComponent
+    component: HomeComponent
   },
   {
     path: 'recipes',
-    component: RecipeComponent
+    component: RecipeListComponent
   },
   {
-    path: 'contact',
-    component: ContactComponent
+    path: 'recipes/:id',
+    component: RecipeDetailComponent
+  },
+  {
+    path: 'create',
+    component: CreateRecipeComponent
   },
   {
     path: '**',

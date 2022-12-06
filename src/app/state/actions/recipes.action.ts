@@ -5,6 +5,7 @@ import { Recipe } from "src/app/models/recipe.model";
 
 export const loadingRecipes = createAction(
   '[Recipes] Loading Recipes',
+
 );
 
 export const loadRecipes = createAction(
