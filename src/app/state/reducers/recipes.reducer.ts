@@ -25,7 +25,7 @@ export const recipesReducer = createReducer(
   on(loadRecipes, (state, { recipes }) => {
     return {
       ...state,
-      recipies: recipes,
+      recipes: recipes,
       loading: false,
     };
   })

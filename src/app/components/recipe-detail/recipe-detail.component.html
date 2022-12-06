@@ -1,1 +1,14 @@
 <p>recipe-detail works!</p>
+
+  <div class="recipe-container"  *ngIf="recipe$ | async as recipe">
+    <a [routerLink]="['recipes', recipe.id]">
+      <h2>{{ recipe.name }}</h2>
+      <img [src]="recipe.image" [alt]="recipe.name">
+    </a>
+    <button class="back-btn" (click)="goBack()">Back</button>
+
+    <div  *ngIf="recipe.edit">
+      <button class="back-btn" (click)="deleteRecipe()">Delete</button>
+      <button class="back-btn" (click)="updateRecipe()">Update</button>
+    </div>
+  </div>

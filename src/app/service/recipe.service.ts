@@ -8,15 +8,23 @@ import { delay, Observable } from 'rxjs';
 })
 export class RecipeService {
 
-  readonly BASE_URL = 'http://localhost:3000/recipes';
+  readonly BASE_URL = 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 
   getRecipes(): Observable<Recipe[]> {
-    return this.http
-    .get<Recipe[]>(`${this.BASE_URL}/recipe`).pipe(
-    delay(1500)
+    console.log("getRecipes")
+    return this.http.get<Recipe[]>(`${this.BASE_URL}/recipes`).pipe(
+      delay(1500)
     );
+  }
+
+  getRecipeById(id: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.BASE_URL}/recipes/${id}`);
+  }
+
+  createRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.post<Recipe>(`${this.BASE_URL}/recipes`, recipe);
   }
 }
 

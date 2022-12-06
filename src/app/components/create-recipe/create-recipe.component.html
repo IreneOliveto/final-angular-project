@@ -1,0 +1,30 @@
+<h1>
+  Contact Us
+</h1>
+
+<div class="container">
+  <form (ngSubmit)="createRecipe()" [formGroup]="createForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Recipe Name</mat-label>
+      <input matInput type="text" placeholder="Name..." formControlName="name" />
+      <p class="error-msg" *ngIf="nameInput.invalid && nameInput.touched">
+        Enter a valid name.....
+      </p>
+    </mat-form-field >
+
+    <mat-form-field appearance="fill">
+      <mat-label>Recipe Instructions</mat-label>
+      <textarea matInput placeholder="Ingredients..." formControlName="instructions"></textarea>
+      <p class="error-msg" *ngIf="instructionsInput.invalid && instructionsInput.touched">
+        Enter a minimum of 10 characters and a maximum of 255.....
+      </p>
+    </mat-form-field >
+
+    <button
+    mat-raised-button
+    type="submit"
+    [disabled]="createForm.invalid">Submit</button>
+    <a class="back-btn" [routerLink]="['']">Back</a>
+  </form>
+</div>
