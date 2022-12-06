@@ -28,6 +28,7 @@ import { RecipesEffects } from './state/effects/recipes.effect';
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { RecipeDetailsEffects } from './state/effects/recipe-details.effect';
 import { CreateRecipeEffects } from './state/effects/create-recipe.effect';
+import { DeleteRecipeEffects } from './state/effects/delete-recipe.effect';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { CreateRecipeEffects } from './state/effects/create-recipe.effect';
     BrowserAnimationsModule,
     EffectsModule.forRoot([RecipesEffects,
     RecipeDetailsEffects,
-  CreateRecipeEffects])
+  CreateRecipeEffects,
+  DeleteRecipeEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

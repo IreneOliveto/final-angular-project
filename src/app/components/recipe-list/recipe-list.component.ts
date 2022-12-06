@@ -24,11 +24,8 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("ng init on list")
     this.loading$ = this.store.select(selectLoading);
     this.recipes$ = this.store.select(selectRecipes);
-    console.log(this.recipes$)
     this.store.dispatch(loadingRecipes());
-    console.log(this.recipes$)
   }
 }
