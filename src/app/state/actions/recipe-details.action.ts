@@ -4,7 +4,7 @@ import { createAction, props } from "@ngrx/store";
 import { Recipe } from "src/app/models/recipe.model";
 
 export const loadingRecipe = createAction(
-  '[Recipe Details] Loading Apartment',
+  '[Recipe Details] Loading Recipe',
   props<{ id: string }>()
 );
 

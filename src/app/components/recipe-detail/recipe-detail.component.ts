@@ -5,7 +5,9 @@ import { Store } from '@ngrx/store';
 import { Recipe } from 'src/app/models/recipe.model';
 import { AppState } from 'src/app/state/app.state';
 import { selectRecipe } from 'src/app/state/selectors/recipe-details.selector';
+import { deleteRecipe } from 'src/app/state/selectors/delete-recipe.selector';
 import { loadingRecipe } from 'src/app/state/actions/recipe-details.action';
+import { deletingRecipe } from 'src/app/state/actions/delete-recipe.action';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -36,7 +38,10 @@ export class RecipeDetailComponent implements OnInit{
     this.router.navigate(['/']);
   }
 
-  deleteRecipe() {}
+  deleteRecipe() {
+    this.recipe$ = this.store.select(deleteRecipe)
+    this.store.dispatch(deletingRecipe({ id: this.id}));
+  }
 
   updateRecipe() {
 

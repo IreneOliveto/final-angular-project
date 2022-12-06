@@ -5,9 +5,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
+import { Recipe } from 'src/app/models/recipe.model';
 import { createRecipe, initCreateRecipe } from 'src/app/state/actions/create-recipe.action';
 import { AppState } from 'src/app/state/app.state';
 import { selectCreateRecipeSuccess } from 'src/app/state/selectors/create-recipe.selector';
+import { RecipeDetailComponent } from '../recipe-detail/recipe-detail.component';
+import { selectRecipes } from 'src/app/state/selectors/recipes.selector';
+
 
 @Component({
   selector: 'app-create-recipe',
@@ -35,6 +39,7 @@ export class CreateRecipeComponent implements OnInit {
     this.instructionsInput = new FormControl('', [Validators.required]);
     // this.imgInput = new FormControl('', [Validators.required]);
     this.createForm = new FormGroup({
+
       name: this.nameInput,
       instructions: this.instructionsInput,
       // img: this.imgInput
@@ -49,8 +54,16 @@ export class CreateRecipeComponent implements OnInit {
 
   }
 
+  newRecipe(formValue: any) {
+    let newRecipe = {} as Recipe
+    newRecipe = formValue
+    newRecipe.edit = true;
+    return newRecipe
+  }
+
   createRecipe(): void {
-    this.store.dispatch(createRecipe({ recipe: this.createForm.value}));
+
+    this.store.dispatch(createRecipe({ recipe: this.newRecipe(this.createForm.value)}));
 
     this.createRecipeSuccess$.subscribe(success => {
       if (success) {
