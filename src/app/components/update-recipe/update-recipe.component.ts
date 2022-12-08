@@ -1,31 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe.model';
-import { createRecipe, initCreateRecipe } from 'src/app/state/actions/create-recipe.action';
+import { updatingRecipe } from 'src/app/state/actions/update-recipe.action';
 import { AppState } from 'src/app/state/app.state';
-import { selectCreateRecipeSuccess } from 'src/app/state/selectors/create-recipe.selector';
+import { selectUpdateRecipeSuccess } from 'src/app/state/selectors/update-recipe.selector';
 import { loadingRecipe } from 'src/app/state/actions/recipe-details.action';
 import { selectRecipe } from 'src/app/state/selectors/recipe-details.selector';
 
-
 @Component({
-  selector: 'app-create-recipe',
-  templateUrl: './create-recipe.component.html',
-  styleUrls: ['./create-recipe.component.css']
+  selector: 'app-update-recipe',
+  templateUrl: './update-recipe.component.html',
+  styleUrls: ['./update-recipe.component.css']
 })
-export class CreateRecipeComponent implements OnInit {
+export class UpdateRecipeComponent {
   id: string;
-  createRecipeSuccess$: Observable<boolean>;
+  updateRecipeSuccess$: Observable<boolean>;
 
   recipe$ = new Observable<Recipe>();
 
   createForm: FormGroup;
-  nameInput: FormControl;
-  instructionsInput: FormControl;
 
+  nameInput: FormControl;
   caloriesInput: FormControl;
   fatInput: FormControl;
   satfatInput: FormControl;
@@ -33,6 +31,7 @@ export class CreateRecipeComponent implements OnInit {
   fiberInput: FormControl;
   sugarInput: FormControl;
   proteinInput: FormControl;
+  instructionsInput: FormControl;
   ingredientsInput: FormControl;
 
   constructor(
@@ -41,12 +40,11 @@ export class CreateRecipeComponent implements OnInit {
     private router: Router,
   ) {
     this.id = '';
-    this.createRecipeSuccess$ = new Observable();
+    this.updateRecipeSuccess$ = new Observable();
     this.recipe$ = new Observable<Recipe>();
 
     this.nameInput = new FormControl('', [Validators.required]);
     this.instructionsInput = new FormControl('', [Validators.required]);
-    this.nameInput = new FormControl('', [Validators.required]);
     this.ingredientsInput = new FormControl('', [Validators.required]);
     this.caloriesInput = new FormControl('', [Validators.required]);
     this.carbsInput = new FormControl('', [Validators.required]);
@@ -56,9 +54,7 @@ export class CreateRecipeComponent implements OnInit {
     this.proteinInput = new FormControl('', [Validators.required]);
     this.fiberInput = new FormControl('', [Validators.required]);
 
-
     this.createForm = new FormGroup({
-
       name: this.nameInput,
       calories: this.caloriesInput,
       fat: this.caloriesInput,
@@ -67,54 +63,51 @@ export class CreateRecipeComponent implements OnInit {
       fiber: this.fatInput,
       sugar: this.sugarInput,
       protein: this.proteinInput,
-       instructions: this.instructionsInput,
+      instructions: this.instructionsInput,
       ingredients: this.ingredientsInput
-
     });
 
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    if(this.id !== undefined) {
-      console.log("update")
-      this.recipe$ = this.store.select(selectRecipe);
-      this.store.dispatch(loadingRecipe({ id: this.id }));
-    }
 
-    this.createRecipeSuccess$ = this.store.select(selectCreateRecipeSuccess);
+    this.store.dispatch(loadingRecipe({ id: this.id }));
+    this.store.select(selectRecipe).subscribe((recipe) => {
+      if(recipe){
+        this.createForm.patchValue({
+          name: recipe.name,
+          calories: recipe.calories,
+          fat: recipe.fat,
+          satfat: recipe.satfat,
+          carbs: recipe.carbs,
+          fiber: recipe.fiber,
+          sugar: recipe.sugar,
+          protein: recipe.protein,
+          instructions: recipe.instructions,
+          ingredients: recipe.ingredients.join('\n')
+        })
+      }
+    })
 
-    this.store.dispatch(initCreateRecipe());
-
+    this.updateRecipeSuccess$ = this.store.select(selectUpdateRecipeSuccess);
   }
 
-  newRecipe(formValue: any) {
-    let newRecipe = {} as Recipe
-    newRecipe = formValue
-    newRecipe.edit = true;
-    newRecipe.ingredients = formValue.ingredients.split(`\r`)
-    return newRecipe
-  }
-
-  submitForm(): void {
-      this.createRecipe();
-  }
-
-  createRecipe(): void {
+  updateRecipe(): void {
     this.createForm.value.ingredients = this.createForm.value.ingredients.trim().split('\n');
     this.createForm.value.edit = true;
-    this.store.dispatch(createRecipe({ recipe: this.createForm.value}));
+    this.createForm.value.id = this.id;
+    this.store.dispatch(updatingRecipe({ recipe: this.createForm.value}));
 
-    this.createRecipeSuccess$.subscribe(success => {
+    this.updateRecipeSuccess$.subscribe(success => {
+      console.log(success)
       if (success) {
-        alert('recipe created successfully!');
-        this.router.navigate(['/home']);
-      } else {
-        console.log('fail');
+        alert('recipe updated successfully!');
+        this.router.navigate(['/recipes']);
       }
     });
-
   }
 
 }
+
 

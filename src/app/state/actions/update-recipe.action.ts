@@ -7,6 +7,5 @@ export const updatingRecipe = createAction(
 );
 
 export const updateRecipeSuccess = createAction(
-  '[Update Recipe] Update Recipe',
-  props<{ recipe: Recipe}>()
+  '[Update Recipe] Update Recipe Success',
 );

@@ -16,7 +16,7 @@ export class UpdateRecipeEffects {
       ofType(updatingRecipe),
       mergeMap(action => this.recipeService.updateRecipeById(action.recipe)
         .pipe(
-          map(recipe => updateRecipeSuccess({ recipe })
+          map(recipe => updateRecipeSuccess()
           )
         ),
       )

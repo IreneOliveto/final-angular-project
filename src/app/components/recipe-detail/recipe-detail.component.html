@@ -1,14 +1,27 @@
-<p>recipe-detail works!</p>
+  <div class="recipe-container"  *ngIf="recipe$ | async as recipe" style="display:flex; flex-direction: column;">
 
-  <div class="recipe-container"  *ngIf="recipe$ | async as recipe">
-    <a [routerLink]="['recipes', recipe.id]">
-      <h2>{{ recipe.name }}</h2>
-      <img [src]="recipe.image" [alt]="recipe.name">
-    </a>
-    <button class="back-btn" (click)="goBack()">Back</button>
+    <mat-card-title>{{ recipe.name }}</mat-card-title>
 
-    <div  *ngIf="recipe.edit">
-      <button class="back-btn" (click)="deleteRecipe()">Delete</button>
-      <button class="back-btn" (click)="updateRecipe()">Update</button>
-    </div>
+
+    <img mat-card-xl-image [src]="recipe.image" [alt]="recipe.name">
+
+    <mat-card>
+      <mat-card-title>Ingredients</mat-card-title>
+          <mat-list ngIfInstanceof="Array" *ngFor="let ingredient of recipe.ingredients" role="list">
+            <mat-list-item role="listitem">{{ ingredient }}</mat-list-item>
+          </mat-list>
+    </mat-card>
+
+
+    <mat-card>
+      <mat-card-content>{{ recipe.instructions }}	</mat-card-content>
+    </mat-card>
+
+    <button mat-button (click)="goBack()">Back</button>
+
+    <mat-card-actions *ngIf="recipe.edit">
+      <button mat-button (click)="deleteRecipe()">Delete</button>
+      <button mat-button (click)="updateRecipe()">Update</button>
+    </mat-card-actions>
+
   </div>
