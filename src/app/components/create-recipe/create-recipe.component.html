@@ -1,8 +1,9 @@
+<button mat-button (click)="goBack()">Back</button>
 <h1>
   Create new Recipe
 </h1>
 
-<div class="container">
+<div class="add-recipe">
   <form (ngSubmit)="createRecipe()" [formGroup]="createForm" style="display:flex; flex-direction: column;">
 
     <mat-form-field appearance="fill">
@@ -65,6 +66,5 @@
     mat-raised-button
     type="submit"
     [disabled]="createForm.invalid">Submit</button>
-    <a class="back-btn" [routerLink]="['']">Back</a>
   </form>
 </div>

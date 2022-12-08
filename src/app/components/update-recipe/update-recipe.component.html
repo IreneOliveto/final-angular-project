@@ -2,8 +2,8 @@
   Update Recipe
 </h1>
 
-<div class="container">
-  <form (ngSubmit)="updateRecipe()" [formGroup]="createForm" style="display:flex; flex-direction: column;">
+<div class="add-recipe">
+  <form (ngSubmit)="updateRecipe()" [formGroup]="updateForm" style="display:flex; flex-direction: column;">
 
     <mat-form-field appearance="fill">
       <mat-label>Recipe Name</mat-label>
@@ -64,7 +64,7 @@
     <button
     mat-raised-button
     type="submit"
-    [disabled]="createForm.invalid">Submit</button>
+    [disabled]="updateForm.invalid">Submit</button>
     <a class="back-btn" [routerLink]="['/recipes', id]">Back</a>
   </form>
 </div>

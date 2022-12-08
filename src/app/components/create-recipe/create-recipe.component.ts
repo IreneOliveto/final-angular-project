@@ -108,12 +108,14 @@ export class CreateRecipeComponent implements OnInit {
     this.createRecipeSuccess$.subscribe(success => {
       if (success) {
         alert('recipe created successfully!');
-        this.router.navigate(['/home']);
-      } else {
-        console.log('fail');
+        this.router.navigate(['/recipes']);
       }
     });
 
+  }
+
+  goBack(): void {
+    this.router.navigate(['/recipes']);
   }
 
 }

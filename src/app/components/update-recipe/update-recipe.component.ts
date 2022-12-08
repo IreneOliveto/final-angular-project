@@ -21,7 +21,7 @@ export class UpdateRecipeComponent {
 
   recipe$ = new Observable<Recipe>();
 
-  createForm: FormGroup;
+  updateForm: FormGroup;
 
   nameInput: FormControl;
   caloriesInput: FormControl;
@@ -54,7 +54,7 @@ export class UpdateRecipeComponent {
     this.proteinInput = new FormControl('', [Validators.required]);
     this.fiberInput = new FormControl('', [Validators.required]);
 
-    this.createForm = new FormGroup({
+    this.updateForm = new FormGroup({
       name: this.nameInput,
       calories: this.caloriesInput,
       fat: this.caloriesInput,
@@ -75,7 +75,7 @@ export class UpdateRecipeComponent {
     this.store.dispatch(loadingRecipe({ id: this.id }));
     this.store.select(selectRecipe).subscribe((recipe) => {
       if(recipe){
-        this.createForm.patchValue({
+        this.updateForm.patchValue({
           name: recipe.name,
           calories: recipe.calories,
           fat: recipe.fat,
@@ -94,10 +94,10 @@ export class UpdateRecipeComponent {
   }
 
   updateRecipe(): void {
-    this.createForm.value.ingredients = this.createForm.value.ingredients.trim().split('\n');
-    this.createForm.value.edit = true;
-    this.createForm.value.id = this.id;
-    this.store.dispatch(updatingRecipe({ recipe: this.createForm.value}));
+    this.updateForm.value.ingredients = this.updateForm.value.ingredients.trim().split('\n');
+    this.updateForm.value.edit = true;
+    this.updateForm.value.id = this.id;
+    this.store.dispatch(updatingRecipe({ recipe: this.updateForm.value}));
 
     this.updateRecipeSuccess$.subscribe(success => {
       console.log(success)
