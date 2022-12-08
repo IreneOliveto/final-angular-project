@@ -6,7 +6,7 @@ export const initCreateRecipe = createAction(
 );
 
 export const createRecipe = createAction(
-  '[Create Recipe] Create Apartment',
+  '[Create Recipe] Create Recipe',
     props<{ recipe: Recipe }>()
 );
 

@@ -1,1 +1,42 @@
+h1 {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 10px auto;
+    width: 40%;
+}
 
+.recipes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.mat-mdc-card-image {
+    object-fit: cover;
+    height: 50vh;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.ingredients-container {
+    margin-left: 10px;
+}
+
+.instructions {
+    width: 80vh;
+}
+
+.mdc-list-item.mdc-list-item--with-one-line {
+    height: 4vh;
+}
+
+.mat-mdc-card-content:last-child {
+    line-height: 5vh;
+    text-align: justify;
+}

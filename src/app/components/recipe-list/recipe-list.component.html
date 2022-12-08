@@ -1,6 +1,7 @@
-<mat-card-title>Recipes</mat-card-title>
-<div *ngIf="loading$ | async">
-  <mat-spinner></mat-spinner>
+<h1>Recipes</h1>
+<div ngClass="loading"  *ngIf="loading$ | async">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+
 </div>
 
 <div  class="recipes-container" *ngIf="!(loading$ | async)" style="display:flex; flex-wrap: wrap;">
@@ -11,7 +12,7 @@
 
     <mat-card-header [ngStyle]="{'color':'black'}"> {{recipe.name}} </mat-card-header>
 
-    <button [routerLink]="['/recipes', recipe.id]" mat-button>Read more</button>
+    <button mat-raised-button [routerLink]="['/recipes', recipe.id]" mat-button>Read more</button>
 
   </mat-card>
   </div>

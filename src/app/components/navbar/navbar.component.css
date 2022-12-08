@@ -1,6 +1,8 @@
 .mat-toolbar{
-  background-color: #919fb9;;
+  background-image: linear-gradient(90deg, rgb(39, 104, 147) 0%, #161e2e 100%);
   color: white;
+  border-bottom-left-radius: 70px;
+
 }
 .mat-button{
    color: white;

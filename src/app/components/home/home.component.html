@@ -1,7 +1,19 @@
-<mat-card-title>A world of recipes. </mat-card-title>
-<img mat-card-xl-image src="https://images.squarespace-cdn.com/content/v1/53b839afe4b07ea978436183/1608506169128-S6KYNEV61LEP5MS1UIH4/traditional-food-around-the-world-Travlinmad.jpg?format=1500w">
+<div ngClass="flex">
+    <h1>A world of recipes</h1>
 
+    <a [routerLink]="['/recipes']">
+        <div class="example-button-row">
+            <button mat-fab extended color="primary">
+            <mat-icon>favorite</mat-icon>
+            Descover our recipes
+            </button>
+        </div>
+    </a>
+    <div ngClass="loading">
+        <img mat-card-image src="https://images.squarespace-cdn.com/content/v1/53b839afe4b07ea978436183/1608506169128-S6KYNEV61LEP5MS1UIH4/traditional-food-around-the-world-Travlinmad.jpg?format=1500w">
+    </div>
 
+</div>
 
 
 

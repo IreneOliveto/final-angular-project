@@ -1,11 +1,16 @@
-  <div class="recipe-container"  *ngIf="recipe$ | async as recipe" style="display:flex; flex-direction: column;">
+<button mat-button (click)="goBack()">Back</button>
 
-    <mat-card-title>{{ recipe.name }}</mat-card-title>
+<div
+  ngClass="recipe-container"
+  *ngIf="recipe$ | async as recipe" style="display:flex;
+  flex-direction: column;">
 
+  <h1>{{ recipe.name }}</h1>
 
-    <img mat-card-xl-image [src]="recipe.image" [alt]="recipe.name">
+  <img mat-card-image [src]="recipe.image" [alt]="recipe.name">
 
-    <mat-card>
+  <div ngClass="flex">
+    <mat-card ngClass="ingredients-container">
       <mat-card-title>Ingredients</mat-card-title>
           <mat-list ngIfInstanceof="Array" *ngFor="let ingredient of recipe.ingredients" role="list">
             <mat-list-item role="listitem">{{ ingredient }}</mat-list-item>
@@ -13,15 +18,16 @@
     </mat-card>
 
 
-    <mat-card>
+    <mat-card ngClass="instructions">
+      <mat-card-title>Instructions</mat-card-title>
       <mat-card-content>{{ recipe.instructions }}	</mat-card-content>
     </mat-card>
-
-    <button mat-button (click)="goBack()">Back</button>
-
-    <mat-card-actions *ngIf="recipe.edit">
-      <button mat-button (click)="deleteRecipe()">Delete</button>
-      <button mat-button (click)="updateRecipe()">Update</button>
-    </mat-card-actions>
-
   </div>
+
+
+  <mat-card-actions *ngIf="recipe.edit">
+    <button mat-button (click)="deleteRecipe()">Delete</button>
+    <button mat-button (click)="updateRecipe()">Update</button>
+  </mat-card-actions>
+
+</div>

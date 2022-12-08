@@ -1,0 +1,10 @@
+footer {
+    color: #fff;
+    background-image: linear-gradient(90deg, rgb(39, 104, 147) 0%, #161e2e 100%);
+    border-top-right-radius: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 10vh;
+    justify-content: space-around;
+}
