@@ -35,7 +35,7 @@ export class RecipeDetailComponent implements OnInit{
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   deleteRecipe() {
@@ -44,6 +44,6 @@ export class RecipeDetailComponent implements OnInit{
   }
 
   updateRecipe() {
-
+    this.router.navigate(['/update', this.id]);
   }
 }

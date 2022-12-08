@@ -2,21 +2,21 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, mergeMap } from "rxjs";
 import { RecipeService } from "src/app/service/recipe.service";
-import { deleteRecipe, deletingRecipe } from "../actions/delete-recipe.action";
+import { updateRecipeSuccess, updatingRecipe } from "../actions/update-recipe.action";
 
 @Injectable()
-export class DeleteRecipeEffects {
+export class UpdateRecipeEffects {
   constructor(
     private actions$: Actions,
     private recipeService: RecipeService
   ) {}
 
-  deletingRecipe$ = createEffect(() => {
+  updatingRecipe$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(deletingRecipe),
-      mergeMap(action => this.recipeService.deleteRecipeById(action.id)
+      ofType(updatingRecipe),
+      mergeMap(action => this.recipeService.updateRecipeById(action.recipe)
         .pipe(
-          map(recipe => deleteRecipe({ recipe })
+          map(recipe => updateRecipeSuccess()
           )
         ),
       )

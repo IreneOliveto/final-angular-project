@@ -14,6 +14,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list'
 
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 import { HomeComponent } from './components/home/home.component';
@@ -29,6 +30,8 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
 import { RecipeDetailsEffects } from './state/effects/recipe-details.effect';
 import { CreateRecipeEffects } from './state/effects/create-recipe.effect';
 import { DeleteRecipeEffects } from './state/effects/delete-recipe.effect';
+import { UpdateRecipeEffects } from './state/effects/update-recipe.effect';
+import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { DeleteRecipeEffects } from './state/effects/delete-recipe.effect';
     RecipeDetailComponent,
     NavbarComponent,
     FooterComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    UpdateRecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -57,13 +61,16 @@ import { DeleteRecipeEffects } from './state/effects/delete-recipe.effect';
     MatInputModule,
     MatCardModule,
     MatGridListModule,
+    MatListModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule,
     EffectsModule.forRoot([RecipesEffects,
-    RecipeDetailsEffects,
-  CreateRecipeEffects,
-  DeleteRecipeEffects])
+      RecipeDetailsEffects,
+      CreateRecipeEffects,
+      DeleteRecipeEffects,
+      UpdateRecipeEffects
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
