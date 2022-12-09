@@ -44,15 +44,15 @@ export class UpdateRecipeComponent {
     this.recipe$ = new Observable<Recipe>();
 
     this.nameInput = new FormControl('', [Validators.required]);
-    this.instructionsInput = new FormControl('', [Validators.required]);
-    this.ingredientsInput = new FormControl('', [Validators.required]);
-    this.caloriesInput = new FormControl('', [Validators.required]);
-    this.carbsInput = new FormControl('', [Validators.required]);
-    this.fatInput = new FormControl('', [Validators.required]);
-    this.satfatInput = new FormControl('', [Validators.required]);
-    this.sugarInput = new FormControl('', [Validators.required]);
-    this.proteinInput = new FormControl('', [Validators.required]);
-    this.fiberInput = new FormControl('', [Validators.required]);
+    this.instructionsInput = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(255)]);
+    this.ingredientsInput = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(255)]);
+    this.caloriesInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.carbsInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.fatInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.satfatInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.sugarInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.proteinInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.fiberInput = new FormControl('', [Validators.required, Validators.min(0)]);
 
     this.updateForm = new FormGroup({
       name: this.nameInput,
@@ -106,6 +106,10 @@ export class UpdateRecipeComponent {
         this.router.navigate(['/recipes']);
       }
     });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/recipes']);
   }
 
 }

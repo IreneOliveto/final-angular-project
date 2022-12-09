@@ -25,7 +25,6 @@ export class CreateRecipeComponent implements OnInit {
   createForm: FormGroup;
   nameInput: FormControl;
   instructionsInput: FormControl;
-
   caloriesInput: FormControl;
   fatInput: FormControl;
   satfatInput: FormControl;
@@ -34,6 +33,7 @@ export class CreateRecipeComponent implements OnInit {
   sugarInput: FormControl;
   proteinInput: FormControl;
   ingredientsInput: FormControl;
+  imageInput: FormControl;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,20 +45,18 @@ export class CreateRecipeComponent implements OnInit {
     this.recipe$ = new Observable<Recipe>();
 
     this.nameInput = new FormControl('', [Validators.required]);
-    this.instructionsInput = new FormControl('', [Validators.required]);
-    this.nameInput = new FormControl('', [Validators.required]);
-    this.ingredientsInput = new FormControl('', [Validators.required]);
-    this.caloriesInput = new FormControl('', [Validators.required]);
-    this.carbsInput = new FormControl('', [Validators.required]);
-    this.fatInput = new FormControl('', [Validators.required]);
-    this.satfatInput = new FormControl('', [Validators.required]);
-    this.sugarInput = new FormControl('', [Validators.required]);
-    this.proteinInput = new FormControl('', [Validators.required]);
-    this.fiberInput = new FormControl('', [Validators.required]);
-
+    this.instructionsInput = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(255)]);
+    this.ingredientsInput = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(255)]);
+    this.caloriesInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.carbsInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.fatInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.satfatInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.sugarInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.proteinInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.fiberInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.imageInput = new FormControl('', [Validators.required]);
 
     this.createForm = new FormGroup({
-
       name: this.nameInput,
       calories: this.caloriesInput,
       fat: this.caloriesInput,
@@ -67,9 +65,9 @@ export class CreateRecipeComponent implements OnInit {
       fiber: this.fatInput,
       sugar: this.sugarInput,
       protein: this.proteinInput,
-       instructions: this.instructionsInput,
-      ingredients: this.ingredientsInput
-
+      instructions: this.instructionsInput,
+      ingredients: this.ingredientsInput,
+      image: this.imageInput
     });
 
   }
@@ -90,14 +88,14 @@ export class CreateRecipeComponent implements OnInit {
 
   newRecipe(formValue: any) {
     let newRecipe = {} as Recipe
-    newRecipe = formValue
+    newRecipe = formValue;
     newRecipe.edit = true;
     newRecipe.ingredients = formValue.ingredients.split(`\r`)
     return newRecipe
   }
 
   submitForm(): void {
-      this.createRecipe();
+    this.createRecipe();
   }
 
   createRecipe(): void {

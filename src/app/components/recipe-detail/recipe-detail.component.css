@@ -1,7 +1,7 @@
 h1 {
     font-size: 25px;
     font-weight: 700;
-    margin: 10px auto;
+    margin: 10px auto 25px;
     width: 40%;
 }
 
@@ -28,9 +28,17 @@ h1 {
     margin-left: 10px;
 }
 
-.instructions {
-    width: 80vh;
+.energetic-values {
+    width: 50%;
 }
+
+mat-card {
+    margin: 15px;
+}
+
+/* .instructions {
+    width: 80vh;
+} */
 
 .mdc-list-item.mdc-list-item--with-one-line {
     height: 4vh;

@@ -33,7 +33,6 @@ import { CreateRecipeEffects } from './state/effects/create-recipe.effect';
 import { DeleteRecipeEffects } from './state/effects/delete-recipe.effect';
 import { UpdateRecipeEffects } from './state/effects/update-recipe.effect';
 import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
-import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
@@ -47,7 +46,6 @@ import { TableComponent } from './components/table/table.component';
     FooterComponent,
     CreateRecipeComponent,
     UpdateRecipeComponent,
-    TableComponent
   ],
   imports: [
     BrowserModule,
