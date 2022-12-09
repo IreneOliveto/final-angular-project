@@ -19,28 +19,33 @@
       <mat-label>calories</mat-label>
       <input *ngIf="recipe$ | async as recipe" matInput type="number" placeholder="calories..." formControlName="calories" [value]="recipe.calories" />
       <input *ngIf="!(recipe$ | async) as recipe" matInput type="number" placeholder="calories..." formControlName="calories" />
-
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>fat</mat-label>
       <input matInput type="number" placeholder="fat..." formControlName="fat" />
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>satfat</mat-label>
       <input matInput type="number" placeholder="satfat..." formControlName="satfat" />
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>carbs</mat-label>
       <input matInput type="number" placeholder="carbs..." formControlName="carbs" />
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>fiber</mat-label>
       <input matInput type="number" placeholder="fiber..." formControlName="fiber" />
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>sugar</mat-label>
       <input matInput type="number" placeholder="sugar..." formControlName="sugar" />
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>protein</mat-label>
       <input matInput type="number" placeholder="protein..." formControlName="protein" />
@@ -49,18 +54,23 @@
     <mat-form-field appearance="fill">
       <mat-label>Recipe Instructions</mat-label>
       <textarea matInput placeholder="Instructions..." formControlName="instructions"></textarea>
-      <p class="error-msg" *ngIf="instructionsInput.invalid && instructionsInput.touched">
-        Enter a minimum of 10 characters and a maximum of 255.....
-      </p>
+      <mat-error *ngIf="instructionsInput.invalid && instructionsInput.touched">
+        Enter a minimum of 4 characters and a maximum of 255.....
+      </mat-error>
     </mat-form-field >
 
-     <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill">
       <mat-label>Recipe Ingredients</mat-label>
       <textarea matInput placeholder="Ingredients..." formControlName="ingredients"></textarea>
-      <p class="error-msg" *ngIf="instructionsInput.invalid && instructionsInput.touched">
-        Enter a minimum of 10 characters and a maximum of 255.....
-      </p>
+      <mat-error *ngIf="ingredientsInput.invalid && ingredientsInput.touched">
+        Enter a minimum of 4 characters and a maximum of 255.....
+      </mat-error>
     </mat-form-field >
+
+    <mat-form-field appearance="fill">
+      <mat-label>Image URL</mat-label>
+      <input matInput type="url" placeholder="Image URL..." formControlName="image" />
+    </mat-form-field>
 
     <button
     mat-raised-button

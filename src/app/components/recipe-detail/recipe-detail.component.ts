@@ -41,6 +41,7 @@ export class RecipeDetailComponent implements OnInit{
   deleteRecipe() {
     this.recipe$ = this.store.select(deleteRecipe)
     this.store.dispatch(deletingRecipe({ id: this.id}));
+    this.router.navigate(['/recipes']);
   }
 
   updateRecipe() {
