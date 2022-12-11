@@ -1,3 +1,5 @@
+// state/effects/delete-recipe.effect.ts
+
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, mergeMap } from "rxjs";
@@ -14,9 +16,9 @@ export class DeleteRecipeEffects {
   deletingRecipe$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(deletingRecipe),
-      mergeMap(action => this.recipeService.deleteRecipeById(action.id)
+      mergeMap(action => this.recipeService.deleteRecipeById(action.id) // Delete the recipe
         .pipe(
-          map(recipe => deleteRecipe({ recipe })
+          map(recipe => deleteRecipe({ recipe })  // dispatch the deleteRecipe action
           )
         ),
       )

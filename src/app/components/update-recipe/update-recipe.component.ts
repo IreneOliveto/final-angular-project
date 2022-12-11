@@ -33,6 +33,8 @@ export class UpdateRecipeComponent {
   proteinInput: FormControl;
   instructionsInput: FormControl;
   ingredientsInput: FormControl;
+  imageInput: FormControl;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -53,6 +55,8 @@ export class UpdateRecipeComponent {
     this.sugarInput = new FormControl('', [Validators.required, Validators.min(0)]);
     this.proteinInput = new FormControl('', [Validators.required, Validators.min(0)]);
     this.fiberInput = new FormControl('', [Validators.required, Validators.min(0)]);
+    this.imageInput = new FormControl('', [Validators.required]);
+
 
     this.updateForm = new FormGroup({
       name: this.nameInput,
@@ -64,7 +68,8 @@ export class UpdateRecipeComponent {
       sugar: this.sugarInput,
       protein: this.proteinInput,
       instructions: this.instructionsInput,
-      ingredients: this.ingredientsInput
+      ingredients: this.ingredientsInput,
+      image: this.imageInput
     });
 
   }
@@ -85,7 +90,8 @@ export class UpdateRecipeComponent {
           sugar: recipe.sugar,
           protein: recipe.protein,
           instructions: recipe.instructions,
-          ingredients: recipe.ingredients.join('\n')
+          ingredients: recipe.ingredients.join('\n'),
+          image: recipe.image
         })
       }
     })
@@ -100,7 +106,6 @@ export class UpdateRecipeComponent {
     this.store.dispatch(updatingRecipe({ recipe: this.updateForm.value}));
 
     this.updateRecipeSuccess$.subscribe(success => {
-      console.log(success)
       if (success) {
         alert('recipe updated successfully!');
         this.router.navigate(['/recipes']);

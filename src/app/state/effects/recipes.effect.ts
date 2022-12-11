@@ -9,16 +9,17 @@ import { loadRecipes, loadingRecipes } from "../actions/recipes.action";
 @Injectable()
 export class RecipesEffects {
   constructor(
+    // check which actions we have, we import Action and API
     private actions$: Actions,
     private recipeService: RecipeService
   ) {}
 
   loadingRecipes$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(loadingRecipes),
-      mergeMap(() => this.recipeService.getRecipes()
-        .pipe(
-          map(recipes => loadRecipes({ recipes }),
+      ofType(loadingRecipes), // when this accion is dispached
+      mergeMap(() => this.recipeService.getRecipes() // return the data from the API
+        .pipe( // success case
+          map(recipes => loadRecipes({ recipes }), // dispatch the loadRecipes action
           )
         ),
       )

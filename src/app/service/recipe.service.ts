@@ -13,10 +13,7 @@ export class RecipeService {
   constructor(private http: HttpClient) { }
 
   getRecipes(): Observable<Recipe[]> {
-    console.log("getRecipes")
-    return this.http.get<Recipe[]>(`${this.BASE_URL}/recipes`).pipe(
-      delay(1500)
-    );
+    return this.http.get<Recipe[]>(`${this.BASE_URL}/recipes`);
   }
 
   getRecipeById(id: string): Observable<Recipe> {

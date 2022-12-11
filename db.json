@@ -1596,45 +1596,9 @@
       ]
     },
     {
-      "name": "ray2121",
-      "calories": 123111,
-      "fat": 123111,
-      "satfat": 123,
-      "carbs": 123,
-      "fiber": 123,
-      "sugar": 123,
-      "protein": 123333,
-      "instructions": "adas\nasdas",
-      "ingredients": [
-        "asdasd",
-        "asdasd"
-      ],
-      "edit": true,
-      "id": 51
-    },
-    {
-      "name": "Prueba",
-      "calories": 1,
-      "fat": 1,
-      "satfat": 1,
-      "carbs": 1,
-      "fiber": 1,
-      "sugar": 1,
-      "protein": 1,
-      "instructions": "111111111111111111111111111",
-      "ingredients": [
-        "11111111111111111111",
-        "11111111111111111111",
-        "222222222222222222222",
-        "11111111111111111"
-      ],
-      "edit": true,
-      "id": 52
-    },
-    {
-      "name": "Prueba",
-      "calories": 1,
-      "fat": 1,
+      "name": "Prueba2",
+      "calories": 12,
+      "fat": 12,
       "satfat": 1,
       "carbs": 1,
       "fiber": 1,
