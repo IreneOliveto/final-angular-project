@@ -2,26 +2,36 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
 
+## Description of the project:
+
+## Wireframes:
+I created the wireframe with draw.io ![final-project-recipes](https://user-images.githubusercontent.com/106282460/206895750-87bc85ac-83c4-4466-9fcd-4a2d47586c01.png)
+
+## Technologies Used:
+* Angular
+* Angular Material
+* CSS
+
+## Components and Pages structure
+This webpage is composeb by four main pages: the homepage, the recipes page and the create recipe page, and update page all of them have the same navbar and footer, with different contents between them.
+* The **homepage** has a title, a button linked to the recipes page and an hero section.
+
+* The **recipes page** has the list of all the recipes of the db. Every recipe is a card with a "read more" button linked to therecipe detail page of that specific recipe.
+
+* The **recipe detail page** has the name, the photo and the informations of the recipe clicked. 
+
+* The **create recipe page** has a form with all the recipes data and a submit button, submitting the form the new recipe will be created in the database. The form validation checks if all the fields are filled. When a new recipe is created, the detail page will show two new buttons: "update" and "delete".
+
+* The **update recipe page** has a form with all the recipes data  saved in the db and a submit button. By submitting the form, the recipe will be updated in the database. The form validation checks if all the fields are filled. When a new recipe is created, the detail page will show two new buttons: "update" and "delete".
+
+## Project Link
 ## Development server
+Run `json-server --watch db.json --port 8000`
+Run `ng serve` for a dev server. 
+Navigate to `http://localhost:4200/`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Resources
+IronHack material and internet research.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Created by
+Irene Oliveto
