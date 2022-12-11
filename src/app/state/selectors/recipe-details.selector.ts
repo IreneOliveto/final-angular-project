@@ -1,4 +1,4 @@
-// state/selectors/apartment-details.selector.ts
+// state/selectors/recipe-details.selector.ts
 
 import { createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';

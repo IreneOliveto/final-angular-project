@@ -1,4 +1,4 @@
-// recipe-details.reducer.ts
+// delete-recipe.reducer.ts
 
 import { createReducer, on } from "@ngrx/store";
 import { Recipe } from "src/app/models/recipe.model";

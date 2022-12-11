@@ -75,7 +75,6 @@ export class CreateRecipeComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     if(this.id !== undefined) {
-      console.log("update")
       this.recipe$ = this.store.select(selectRecipe);
       this.store.dispatch(loadingRecipe({ id: this.id }));
     }

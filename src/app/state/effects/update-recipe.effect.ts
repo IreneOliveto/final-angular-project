@@ -1,3 +1,5 @@
+// state/effects/update-recipe.effect.ts
+
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, mergeMap } from "rxjs";
@@ -14,9 +16,9 @@ export class UpdateRecipeEffects {
   updatingRecipe$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(updatingRecipe),
-      mergeMap(action => this.recipeService.updateRecipeById(action.recipe)
+      mergeMap(action => this.recipeService.updateRecipeById(action.recipe) // Update the recipe
         .pipe(
-          map(recipe => updateRecipeSuccess()
+          map(recipe => updateRecipeSuccess() // dispatch the updateRecipeSuccess action
           )
         ),
       )

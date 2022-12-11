@@ -1,4 +1,4 @@
-// state/actions/apartment-details.action.ts
+// state/actions/recipe-details.action.ts
 
 import { createAction, props } from "@ngrx/store";
 import { Recipe } from "src/app/models/recipe.model";
