@@ -35,5 +35,11 @@ Navigate to `http://localhost:4200/`.
 ## Resources
 IronHack material and internet research.
 
+## Presentation
+https://slides.com/ireneoliveto/bold
+
+## Trello
+https://trello.com/b/M66bqU3l/final-project
+
 ## Created by
 Irene Oliveto
