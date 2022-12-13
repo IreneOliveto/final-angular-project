@@ -11,6 +11,7 @@ The wireframe of this project was created by me with draw.io:
 ## Technologies Used:
 * Angular
 * Angular Material
+* ReDux
 * CSS
 
 ## Components and Pages structure
